@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Phone } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Phone, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import { FOUNDATION_ASSETS, FOUNDATION_INFO, UI_COPY } from '../data/foundationData';
@@ -8,6 +8,7 @@ interface HeroSectionProps {
 }
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const HERO_BANNER_PATH = '/src/assets/images/foundation_hero_banner_1794878043218.jpg';
 
 export function HeroSection({ onStartEstimate }: HeroSectionProps) {
   const { lang, isRtl } = useLanguage();
@@ -48,60 +49,63 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border-b border-slate-200 bg-white"
+      className="relative overflow-hidden border-b border-slate-200 bg-slate-950 text-white"
     >
-      {/* Subtle Architectural Dot Grid & Soft Top Glow */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-sky-50/70 via-white/40 to-white"
-      />
+      {/* Background Hero Generated Image with Cinematic Scrim */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={HERO_BANNER_PATH}
+          alt="Harbi Al-Muntasir Foundation Tech Headquarters"
+          referrerPolicy="no-referrer"
+          className="h-full w-full object-cover object-center opacity-40 scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
+      </div>
 
-      <div className="relative mx-auto max-w-[1200px] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-stretch">
+      <div className="relative z-10 mx-auto max-w-[1200px] px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Primary Proposition & Actions */}
           <div className="flex flex-col justify-between lg:col-span-7">
             <div>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-                className="text-xs font-medium tracking-wide text-sky-700"
+                className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-500/10 px-3.5 py-1.5 text-xs font-semibold text-sky-300 backdrop-blur-md"
               >
-                {UI_COPY.hero.kicker[lang]}
-              </motion.p>
+                <Sparkles className="h-3.5 w-3.5 text-sky-400" aria-hidden="true" />
+                <span>{UI_COPY.hero.kicker[lang]}</span>
+              </motion.div>
 
               <motion.h1
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.06, ease: EASE_OUT_EXPO }}
-                className="mt-4 max-w-2xl text-balance text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.12] tracking-tight text-slate-950"
+                className="mt-6 max-w-2xl text-balance text-[clamp(2.5rem,4.5vw,4rem)] font-extrabold leading-[1.08] tracking-tight text-white"
               >
                 {UI_COPY.hero.headline[lang]}
               </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.12, ease: EASE_OUT_EXPO }}
-                className="mt-5 max-w-[65ch] text-base leading-[1.65] text-slate-600 sm:text-lg"
+                className="mt-6 max-w-[65ch] text-base leading-[1.7] text-slate-300 sm:text-lg"
               >
                 {UI_COPY.hero.subheadline[lang]}
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.18, ease: EASE_OUT_EXPO }}
-                className="mt-8 flex flex-wrap items-center gap-4"
+                className="mt-9 flex flex-wrap items-center gap-4"
               >
                 <button
                   type="button"
                   onClick={onStartEstimate}
-                  className="inline-flex h-12 items-center gap-2 rounded-lg bg-sky-600 px-6 text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-all duration-150 hover:bg-sky-700 hover:shadow-md hover:shadow-sky-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 cursor-pointer"
+                  className="inline-flex h-13 items-center gap-2.5 rounded-xl bg-sky-500 px-7 text-sm font-bold text-slate-950 whitespace-nowrap shrink-0 transition-all duration-150 hover:bg-sky-400 hover:shadow-lg hover:shadow-sky-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 cursor-pointer"
                 >
                   <span>{UI_COPY.hero.primaryCta[lang]}</span>
                   <ArrowDownRight
@@ -112,7 +116,7 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
 
                 <a
                   href="#projects"
-                  className="inline-flex h-12 items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-800 whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-slate-300 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-600"
+                  className="inline-flex h-13 items-center gap-1.5 rounded-xl border border-white/20 bg-white/5 px-6 text-sm font-semibold text-white whitespace-nowrap shrink-0 backdrop-blur-sm transition-all duration-150 hover:border-white/40 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
                 >
                   <span>{UI_COPY.hero.secondaryCta[lang]}</span>
                 </a>
@@ -121,17 +125,17 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
 
             {/* Proof Strip */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.24, ease: EASE_OUT_EXPO }}
-              className="mt-10 grid grid-cols-1 gap-4 border-t border-slate-200 pt-8 sm:grid-cols-3"
+              className="mt-12 grid grid-cols-1 gap-6 border-t border-white/15 pt-8 sm:grid-cols-3"
             >
               {UI_COPY.hero.proofItems.map((item) => (
                 <div key={item.value}>
-                  <div className="font-mono-tabular text-lg font-semibold text-slate-950">
+                  <div className="font-mono-tabular text-xl font-bold text-sky-400">
                     {item.value}
                   </div>
-                  <div className="mt-1 text-xs text-slate-500">{item.label[lang]}</div>
+                  <div className="mt-1.5 text-xs text-slate-300">{item.label[lang]}</div>
                 </div>
               ))}
             </motion.div>
@@ -139,14 +143,14 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
 
           {/* Right Column: Official Lockup & Active Ecosystem Matrix */}
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.14, ease: EASE_OUT_EXPO }}
             className="lg:col-span-5 flex flex-col"
           >
-            <div className="flex h-full flex-col justify-between rounded-xl border border-slate-200 bg-slate-50/95 p-5 shadow-xs sm:p-6">
+            <div className="flex h-full flex-col justify-between rounded-2xl border border-white/15 bg-slate-900/80 p-6 backdrop-blur-xl shadow-2xl">
               {/* Official Foundation Banner Image */}
-              <div className="rounded-lg border border-slate-200 bg-white p-4">
+              <div className="rounded-xl border border-white/10 bg-white p-4 shadow-inner">
                 <img
                   src={FOUNDATION_ASSETS.logoBanner}
                   alt={FOUNDATION_INFO.fullOfficialName[lang]}
@@ -156,17 +160,17 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
               </div>
 
               {/* Active Deployments Directory */}
-              <div className="mt-5 flex-1">
-                <div className="border-b border-slate-200 pb-3">
-                  <h2 className="text-sm font-semibold text-slate-900">
+              <div className="mt-6 flex-1">
+                <div className="border-b border-white/10 pb-3">
+                  <h2 className="text-sm font-bold tracking-wide text-white">
                     {UI_COPY.hero.matrixTitle[lang]}
                   </h2>
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="mt-0.5 text-xs text-slate-400">
                     {UI_COPY.hero.matrixSubtitle[lang]}
                   </p>
                 </div>
 
-                <ul className="divide-y divide-slate-200">
+                <ul className="divide-y divide-white/10">
                   {ecosystemLinks.map((entry) => {
                     const isExternal = entry.href.startsWith('http');
                     return (
@@ -175,18 +179,18 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
                           href={entry.href}
                           target={isExternal ? '_blank' : undefined}
                           rel={isExternal ? 'noopener noreferrer' : undefined}
-                          className="group flex items-center justify-between gap-3 py-3 text-sm transition-all duration-150 hover:text-sky-700"
+                          className="group flex items-center justify-between gap-3 py-3.5 text-sm transition-all duration-150 hover:text-sky-300"
                         >
                           <div className="min-w-0 transition-transform duration-150 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
-                            <div className="truncate font-semibold text-slate-900 group-hover:text-sky-700">
+                            <div className="truncate font-semibold text-white group-hover:text-sky-300">
                               {entry.name}
                             </div>
-                            <div className="mt-0.5 text-xs text-slate-500">
+                            <div className="mt-0.5 text-xs text-slate-400">
                               {entry.category[lang]} · {entry.state[lang]}
                             </div>
                           </div>
                           <ArrowUpRight
-                            className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-150 group-hover:text-sky-600 ${
+                            className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-150 group-hover:text-sky-400 ${
                               isRtl ? '-scale-x-100' : ''
                             }`}
                             aria-hidden="true"
@@ -199,13 +203,13 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
               </div>
 
               {/* Direct Founder Contact Footer Row */}
-              <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-200 pt-4 text-xs">
-                <span className="truncate text-slate-600 font-medium">
+              <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4 text-xs">
+                <span className="truncate text-slate-300 font-medium">
                   {FOUNDATION_INFO.founder[lang]}
                 </span>
                 <a
                   href={`tel:+967${FOUNDATION_INFO.phoneRaw}`}
-                  className="inline-flex items-center gap-1.5 font-mono-tabular font-semibold text-sky-700 hover:text-sky-800 whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-1.5 font-mono-tabular font-semibold text-sky-400 hover:text-sky-300 whitespace-nowrap shrink-0"
                 >
                   <Phone className="h-3.5 w-3.5" aria-hidden="true" />
                   <span dir="ltr">{FOUNDATION_INFO.phoneDisplay}</span>
