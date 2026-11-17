@@ -1,0 +1,6 @@
+{
+  "name": "Harbi Al-Muntasir Foundation — IT & AI",
+  "description": "Official corporate website for Harbi Al-Muntasir Foundation for Information Technology & Artificial Intelligence: custom software, e-commerce publishing, AI automation, and digital tender systems.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
