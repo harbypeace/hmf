@@ -2,12 +2,18 @@ import {
   CapabilityItem,
   EstimatorAddon,
   EstimatorProjectType,
+  FaqItem,
   ProjectItem,
   RoadmapPhase,
+  TechStackItem,
 } from '../types';
 
 export const FOUNDATION_ASSETS = {
   logoBanner: '/assets/aistudio/HM_187742a3.png',
+  logoEmblem: '/assets/aistudio/hm_emblem.png',
+  heroBanner: '/src/assets/images/hero_tech_headquarters_1794878657016.jpg',
+  tenderVisual: '/src/assets/images/tender_procurement_visual_1794878657412.jpg',
+  ecommerceVisual: '/src/assets/images/ecommerce_automation_visual_1794878657934.jpg',
 };
 
 export const FOUNDATION_INFO = {
@@ -40,6 +46,7 @@ export const UI_COPY = {
     projects: { en: 'Projects', ar: 'المشاريع' },
     tenderPlatform: { en: 'Tender Platform', ar: 'منصة المناقصات' },
     process: { en: 'Approach', ar: 'آلية العمل' },
+    faq: { en: 'FAQ', ar: 'الأسئلة الشائعة' },
     cta: { en: 'Start Project', ar: 'ابدأ مشروعك' },
     langSwitch: { en: 'العربية', ar: 'EN' },
   },
@@ -161,6 +168,25 @@ export const UI_COPY = {
       en: 'Please enter a valid email address or phone number.',
       ar: 'يرجى إدخال بريد إلكتروني صحيح أو رقم هاتف للتواصل.',
     },
+    tabs: {
+      roadmap: { en: 'Roadmap Phases', ar: 'مراحل الإطلاق' },
+      simulator: { en: 'AI Bid Normalization Demo', ar: 'محاكي تقييم العروض' },
+      interface: { en: 'Platform Interface', ar: 'معاينة الواجهة' },
+    },
+    interfacePreview: {
+      title: {
+        en: 'Enterprise Tendering & Bid Intelligence Console',
+        ar: 'منظومة إدارة المناقصات وتحليل العروض المؤسسية',
+      },
+      subtitle: {
+        en: 'Unified procurement workspace with sealed tender dispatch, automated BOQ line-item parsing, and instant supplier evaluation sheets.',
+        ar: 'مساحة عمل موحدة لإدارة وتفريغ المناقصات، واستخلاص بنود جداول الكميات آلياً، وإصدار تقارير لجان التقييم الفنية والمالية.',
+      },
+      badge: {
+        en: 'Next-Gen Procurement Architecture',
+        ar: 'معمارية متطورة لإدارة المشتريات والمناقصات',
+      },
+    },
   },
   process: {
     kicker: {
@@ -216,6 +242,8 @@ export const UI_COPY = {
       submitBtn: { en: 'Submit Inquiry Brief', ar: 'إرسال طلب المشروع' },
       whatsappBtn: { en: 'Send Brief via WhatsApp', ar: 'إرسال الملخص عبر واتساب' },
       callBtn: { en: 'Call +967 774 295 971', ar: 'اتصال مباشر: 774295971' },
+      copyBriefBtn: { en: 'Copy Scope Brief', ar: 'نسخ ملخص النطاق' },
+      copiedBrief: { en: 'Brief Copied to Clipboard!', ar: 'تم نسخ الملخص للحافظة!' },
       successTitle: {
         en: 'Project brief prepared and recorded.',
         ar: 'تم تجهيز وتسجيل طلب المشروع بنجاح.',
@@ -224,6 +252,42 @@ export const UI_COPY = {
         en: 'Your structured scope has been logged. For immediate scheduling, open the prefilled WhatsApp dispatch or call +967 774 295 971 directly.',
         ar: 'تم حفظ تفاصيل مشروعك بنجاح. للتنسيق الفوري، يمكنك إرسال الملخص المعبأ تلقائياً عبر الواتساب أو الاتصال المباشر على 774295971.',
       },
+    },
+  },
+  techStack: {
+    kicker: {
+      en: 'Production-Grade Architecture & Tooling',
+      ar: 'البنية البرمجية والتقنيات المعتمدة',
+    },
+    heading: {
+      en: 'Modern technologies engineered for speed and resilience.',
+      ar: 'تقنيات حديثة مبنية للسرعة والاستقرار العالي.',
+    },
+    description: {
+      en: 'We deploy on battle-tested frameworks and serverless cloud architectures with zero bloat and uncompromising bilingual support.',
+      ar: 'نعتمد على أحدث أطر العمل السحابية الموثوقة مع معمارية سريعة وخفيفة تدعم اللغتين العربية والإنجليزية بأعلى كفاءة.',
+    },
+  },
+  faq: {
+    kicker: {
+      en: 'Frequently Asked Questions & Advisory',
+      ar: 'الأسئلة الشائعة والاستفسارات التقنية',
+    },
+    heading: {
+      en: 'Common questions on architecture, delivery, and integrations.',
+      ar: 'إجابات واضحة حول التنفيذ، الملكية الفكرية، والربط التقني.',
+    },
+    description: {
+      en: 'Clear answers on project ownership, WhatsApp automation, bilingual RTL engineering, and ongoing technical support.',
+      ar: 'كل ما تحتاج معرفته حول تسليم المشاريع، أتمتة الواتساب، الدعم ثنائي اللغة، والمساندة المستمرة.',
+    },
+    chatPrompt: {
+      en: 'Need a custom architectural consultation? Message Harbi Al-Muntasir directly.',
+      ar: 'هل لديك استفسار تقني خاص؟ تواصل مع حربي المنتصر مباشرة عبر واتساب.',
+    },
+    chatBtn: {
+      en: 'Ask on WhatsApp',
+      ar: 'تواصل عبر واتساب',
     },
   },
   footer: {
@@ -538,6 +602,7 @@ export const PROJECTS: ProjectItem[] = [
     id: 'ecommerce-suite',
     category: 'ecommerce',
     visualTheme: 'ecommerce',
+    previewImagePath: FOUNDATION_ASSETS.ecommerceVisual,
     title: {
       en: 'Published E-Commerce Stores & Order Automation',
       ar: 'نشر المتاجر الإلكترونية وأتمتة الطلبات',
@@ -799,3 +864,169 @@ export const ESTIMATOR_ADDONS: EstimatorAddon[] = [
     complexityWeight: 1,
   },
 ];
+
+export const TECH_STACK_ITEMS: TechStackItem[] = [
+  {
+    name: 'Next.js & React 19',
+    category: { en: 'Frontend Engineering', ar: 'هندسة الواجهات' },
+    badge: 'App Router / SSR',
+    description: {
+      en: 'High-performance components with full Arabic RTL & English LTR fluidity and zero layout shift.',
+      ar: 'مكونات فائقة السرعة تدعم العربية والإنجليزية بمرونة وسلاسة تامة.',
+    },
+  },
+  {
+    name: 'TypeScript Strict',
+    category: { en: 'Code Quality & Stability', ar: 'جودة الكود والاستقرار' },
+    badge: '100% Type Safe',
+    description: {
+      en: 'Eliminates runtime exceptions and guarantees deterministic data contract across portals and APIs.',
+      ar: 'تأمين بنية البيانات البرمجية ومنع الأخطاء غير المتوقعة في بيئات التشغيل.',
+    },
+  },
+  {
+    name: 'PostgreSQL & Cloud Databases',
+    category: { en: 'Data Architecture', ar: 'قواعد البيانات السحابية' },
+    badge: 'ACID / Multi-Tenant',
+    description: {
+      en: 'Relational data integrity with role-based access control for schools, vendors, and enterprises.',
+      ar: 'سلامة البيانات وعلاقاتها مع صلاحيات أمنية متعددة للمدارس والتجار والشركات.',
+    },
+  },
+  {
+    name: 'Applied AI & LLM Pipelines',
+    category: { en: 'Intelligence Modules', ar: 'وحدات الذكاء الاصطناعي' },
+    badge: 'Structured Extraction',
+    description: {
+      en: 'Extracts tabular pricing from tender BOQs and powers personalized student learning curves.',
+      ar: 'استخلاص البيانات والجداول من وثائق المناقصات وتخصيص مسارات تعلم الطلاب.',
+    },
+  },
+  {
+    name: 'WhatsApp Business API & Webhooks',
+    category: { en: 'Automation Engine', ar: 'محرك الأتمتة السريع' },
+    badge: 'Instant Dispatch',
+    description: {
+      en: 'Real-time order confirmations, parent academic alerts, and tender deadline updates.',
+      ar: 'إرسال تأكيدات الطلبات وتنبيهات أولياء الأمور وإشعارات المناقصات لحظياً.',
+    },
+  },
+  {
+    name: 'Edge CDN & Serverless Hosting',
+    category: { en: 'Global Delivery', ar: 'الاستضافة السحابية الموزعة' },
+    badge: 'Vercel / Cloud Run',
+    description: {
+      en: 'Sub-second response times worldwide with automatic SSL, caching, and 99.9% availability.',
+      ar: 'سرعة استجابة فورية حول العالم مع شهادات أمان سحابية وتوافر مستمر بنسبة 99.9%.',
+    },
+  },
+];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: 'faq-1',
+    category: { en: 'Services & Scope', ar: 'الخدمات والنطاق' },
+    question: {
+      en: 'What types of digital platforms does Harbi Al-Muntasir Foundation develop?',
+      ar: 'ما هي نوعية المنصات الرقمية التي تطورها مؤسسة حربي المنتصر؟',
+    },
+    answer: {
+      en: 'We specialize in custom learning management platforms (such as Smart Digital School PRO and Engy Up), exam preparation systems (such as Al-Muta’ahib for Grades 9 & 12), conversion-focused e-commerce stores with automated WhatsApp order dispatch, and the upcoming national Tender & Procurement Platform.',
+      ar: 'نتخصص في منصات التعليم الإلكتروني المخصصة (مثل المدرسة الرقمية الذكية و Engy Up)، ومنصات إتقان الاختبارات (مثل المتأهب لطلاب التاسع والثالث ثانوي)، والمتاجر الإلكترونية المقترنة بأتمتة رسائل الواتساب، ومنصة المناقصات والمشتريات الرقمية قيد التطوير.',
+    },
+  },
+  {
+    id: 'faq-2',
+    category: { en: 'Localization', ar: 'اللغة والتعريب' },
+    question: {
+      en: 'How do you engineer Arabic RTL and English LTR bilingual experiences?',
+      ar: 'كيف تتم هندسة المواقع والمنصات لتدعم العربية والإنجليزية بامتياز؟',
+    },
+    answer: {
+      en: 'We build natively bilingual systems with synchronized document directions (dir="rtl" / dir="ltr"), mirrored flexbox and grid layouts, and paired typographic font pairings (IBM Plex Sans Arabic and Plus Jakarta Sans) so neither language feels like an afterthought.',
+      ar: 'نصمم الأنظمة لتدعم اللغتين بشكل أصيل عبر تبديل اتجاه المستند تلقائياً، ومطابقة المحاذاة والشبكات، واختيار خطوط عربية وإنجليزية متناسقة مثل IBM Plex Sans Arabic و Plus Jakarta Sans لتقديم تجربة قراءة فائقة الدقة.',
+    },
+  },
+  {
+    id: 'faq-3',
+    category: { en: 'Automation', ar: 'الأتمتة والربط' },
+    question: {
+      en: 'How does the automated WhatsApp and invoicing system work for e-commerce?',
+      ar: 'كيف تعمل أتمتة الواتساب وإصدار الفواتير لمتاجر التجارة الإلكترونية؟',
+    },
+    answer: {
+      en: 'When a customer places an order on your storefront, our cloud webhook pipeline immediately generates a branded PDF invoice, alerts your inventory and fulfillment team, and sends a formatted WhatsApp confirmation directly to the buyer with tracking details.',
+      ar: 'بمجرد قيام العميل بالطلب من المتجر، يقوم محرك الأتمتة بإصدار فاتورة إلكترونية معتمدة بصيغة PDF، وتنبيه فريق التجهيز والمخزون، وإرسال رسالة واتساب منسقة ومباشرة إلى العميل لتأكيد الطلب وتتبع التسليم.',
+    },
+  },
+  {
+    id: 'faq-4',
+    category: { en: 'Delivery & Ownership', ar: 'التسليم والملكية' },
+    question: {
+      en: 'Who owns the source code and databases after deployment?',
+      ar: 'من يمتلك الكود المصدري وقواعد البيانات بعد تسليم المشروع؟',
+    },
+    answer: {
+      en: 'You retain full ownership of your custom software, source code, data repositories, and client databases. We hand over the complete repository and hosting credentials upon launch, backed by deployment documentation and maintenance support.',
+      ar: 'يمتلك العميل الملكية الكاملة والشاملة للكود المصدري وقواعد البيانات وحسابات الاستضافة السحابية عند التسليم، مع توفير التوثيق البرمجي والدعم الفني اللازم.',
+    },
+  },
+  {
+    id: 'faq-5',
+    category: { en: 'Tender Platform', ar: 'منصة المناقصات' },
+    question: {
+      en: 'What is the current release timeline for the Digital Tender Platform?',
+      ar: 'ما هي الخطة الزمنية لإطلاق منصة المناقصات والمشتريات الرقمية؟',
+    },
+    answer: {
+      en: 'The Tender Platform is actively in development through our four-phase roadmap. Core vendor registry and RFQ drafting modules are completed, while the AI Bid Normalization engine is currently undergoing testing. Founding enterprise and institutional partners can register for early beta briefing via the section above.',
+      ar: 'المنصة قيد التطوير البرمجي الفعلي ضمن خطة من أربع مراحل، حيث تم إنجاز نظام تسجيل الموردين وطرح كراسات الشروط، ومحرك مقارنة العروض بالذكاء الاصطناعي قيد الاختبار. يمكن للجهات والشركات التسجيل في قائمة الإطلاق المبكر عبر النموذج أعلاه.',
+    },
+  },
+  {
+    id: 'faq-6',
+    category: { en: 'Timeline & Support', ar: 'المدة والدعم' },
+    question: {
+      en: 'How long does a typical build take, and what support is included?',
+      ar: 'كم يستغرق بناء المشروع في العادة وما هو الدعم الفني المرفق؟',
+    },
+    answer: {
+      en: 'Standard storefronts and corporate web portals typically launch within 2 to 4 weeks. Specialized custom LMS and AI-driven platforms range from 4 to 8 weeks depending on module complexity. Every project includes post-launch testing, cloud optimization, and team training.',
+      ar: 'تستغرق المتاجر وبوابات الشركات عادةً بين أسبوعين إلى 4 أسابيع، بينما تستغرق المنصات التعليمية وأنظمة الذكاء الاصطناعي بين 4 إلى 8 أسابيع حسب الوحدات المطلوبة، وتشمل جميع المشاريع مرحلة الفحص، والتحسين السحابي، وتدريب الفريق.',
+    },
+  },
+];
+
+export const TENDER_SIMULATION_BIDS = [
+  {
+    id: 'bid-1',
+    vendorName: { en: 'TechServe Solutions', ar: 'تيك سيرف للحلول التقنية' },
+    unitPricing: { en: 'Optimal Baseline', ar: 'سعر مثالي معتمد' },
+    specCompliance: '98%',
+    complianceLabel: { en: 'Fully Compliant', ar: 'مطابق للمواصفات' },
+    warrantyTerms: { en: '24 Months On-site', ar: '24 شهراً صيانة موقعية' },
+    aiRank: 'Rank #1',
+    badgeColor: 'emerald',
+  },
+  {
+    id: 'bid-2',
+    vendorName: { en: 'Al-Amal Networks & Systems', ar: 'الأمل للشبكات والأنظمة' },
+    unitPricing: { en: '+6% Over Baseline', ar: 'أعلى بنسبة +6% عن الأساس' },
+    specCompliance: '94%',
+    complianceLabel: { en: 'Minor Line Omission', ar: 'نقص طفيف في المواصفة' },
+    warrantyTerms: { en: '12 Months Return', ar: '12 شهراً استبدال' },
+    aiRank: 'Rank #2',
+    badgeColor: 'sky',
+  },
+  {
+    id: 'bid-3',
+    vendorName: { en: 'Yemen Digital Tech Group', ar: 'المجموعة الرقمية اليمنية' },
+    unitPricing: { en: '-12% Anomalous Low', ar: 'منخفض جداً وغير مبرر (-12%)' },
+    specCompliance: '81%',
+    complianceLabel: { en: 'Specification Gaps', ar: 'فروقات في المواصفات' },
+    warrantyTerms: { en: '6 Months Limited', ar: '6 أشهر محدودة' },
+    aiRank: 'Flagged for Review',
+    badgeColor: 'amber',
+  },
+];
+

@@ -7,9 +7,12 @@ import { CapabilitiesSection } from './components/CapabilitiesSection';
 import { ProjectsShowcase } from './components/ProjectsShowcase';
 import { TenderRoadmapSection } from './components/TenderRoadmapSection';
 import { ProcessSection } from './components/ProcessSection';
+import { TechStackSection } from './components/TechStackSection';
+import { FaqSection } from './components/FaqSection';
 import { EstimatorInquirySection } from './components/EstimatorInquirySection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ProjectItem } from './types';
 
 function FoundationPortal() {
@@ -27,7 +30,7 @@ function FoundationPortal() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-sky-600 selection:text-white">
       <Navbar onRequestQuote={() => scrollToEstimator()} />
 
       <main>
@@ -46,6 +49,10 @@ function FoundationPortal() {
 
         <ProcessSection />
 
+        <TechStackSection />
+
+        <FaqSection />
+
         <EstimatorInquirySection
           selectedPresetId={selectedPresetId}
           onPresetChange={setSelectedPresetId}
@@ -53,6 +60,8 @@ function FoundationPortal() {
       </main>
 
       <Footer />
+
+      <FloatingWhatsApp />
 
       <ProjectModal
         project={inspectedProject}

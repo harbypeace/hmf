@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Check, CheckCircle2, MessageCircle, Phone, RotateCcw, Send } from 'lucide-react';
+import { Check, CheckCircle2, Copy, MessageCircle, Phone, RotateCcw, Send } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 import {
@@ -59,6 +59,7 @@ export function EstimatorInquirySection({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [celebrateKey, setCelebrateKey] = useState(0);
+  const [copiedToast, setCopiedToast] = useState(false);
 
   const activeType = useMemo(
     () => ESTIMATOR_TYPES.find((t) => t.id === selectedPresetId) ?? ESTIMATOR_TYPES[0],
@@ -125,6 +126,26 @@ export function EstimatorInquirySection({
   const handleAttachScope = () => {
     setBrief(buildScopeSummaryText());
     setSubmitted(false);
+  };
+
+  const handleCopyScope = async () => {
+    const textToCopy = buildScopeSummaryText();
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(textToCopy);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      setCopiedToast(true);
+      setTimeout(() => setCopiedToast(false), 2600);
+    } catch {
+      // fallback
+    }
   };
 
   const whatsappHref = useMemo(() => {
@@ -343,13 +364,33 @@ export function EstimatorInquirySection({
                 <span dir="ltr" className="font-mono-tabular text-[11px] text-slate-300">
                   {activeType.recommendedStack}
                 </span>
-                <button
-                  type="button"
-                  onClick={handleAttachScope}
-                  className="inline-flex h-9 items-center rounded-lg bg-sky-500 px-3.5 text-xs font-semibold text-slate-950 whitespace-nowrap shrink-0 transition-colors hover:bg-sky-400 cursor-pointer"
-                >
-                  {UI_COPY.estimator.applyScopeBtn[lang]}
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyScope}
+                    className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-white/20 bg-white/10 px-3 text-xs font-semibold text-white whitespace-nowrap shrink-0 transition-colors hover:bg-white/20 cursor-pointer"
+                  >
+                    {copiedToast ? (
+                      <>
+                        <Check className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
+                        <span className="text-emerald-300">{UI_COPY.estimator.form.copiedBrief[lang]}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-3.5 w-3.5 text-sky-400" aria-hidden="true" />
+                        <span>{UI_COPY.estimator.form.copyBriefBtn[lang]}</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleAttachScope}
+                    className="inline-flex h-9 items-center rounded-lg bg-sky-500 px-3.5 text-xs font-bold text-slate-950 whitespace-nowrap shrink-0 transition-colors hover:bg-sky-400 cursor-pointer"
+                  >
+                    {UI_COPY.estimator.applyScopeBtn[lang]}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

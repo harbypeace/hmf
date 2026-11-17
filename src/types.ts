@@ -18,6 +18,7 @@ export interface ProjectItem {
   subtitle: LocalizedText;
   domainLabel: string;
   liveUrl?: string;
+  previewImagePath?: string;
   statusLabel: LocalizedText;
   summary: LocalizedText;
   architectureNote: LocalizedText;
@@ -71,4 +72,18 @@ export interface EstimatorAddon {
   label: LocalizedText;
   weeks: number;
   complexityWeight: number;
+}
+
+export interface FaqItem {
+  id: string;
+  category: LocalizedText;
+  question: LocalizedText;
+  answer: LocalizedText;
+}
+
+export interface TechStackItem {
+  name: string;
+  category: LocalizedText;
+  badge: string;
+  description: LocalizedText;
 }

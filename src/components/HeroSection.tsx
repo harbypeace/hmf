@@ -8,7 +8,6 @@ interface HeroSectionProps {
 }
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
-const HERO_BANNER_PATH = '/src/assets/images/foundation_hero_banner_1794878043218.jpg';
 
 export function HeroSection({ onStartEstimate }: HeroSectionProps) {
   const { lang, isRtl } = useLanguage();
@@ -54,10 +53,10 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
       {/* Background Hero Generated Image with Cinematic Scrim */}
       <div className="absolute inset-0 z-0">
         <img
-          src={HERO_BANNER_PATH}
-          alt="Harbi Al-Muntasir Foundation Tech Headquarters"
+          src={FOUNDATION_ASSETS.heroBanner}
+          alt="Harbi Al-Muntasir Foundation Technology Headquarters"
           referrerPolicy="no-referrer"
-          className="h-full w-full object-cover object-center opacity-40 scale-105 filter brightness-90"
+          className="h-full w-full object-cover object-center opacity-40 scale-105 filter brightness-95"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
@@ -149,14 +148,19 @@ export function HeroSection({ onStartEstimate }: HeroSectionProps) {
             className="lg:col-span-5 flex flex-col"
           >
             <div className="flex h-full flex-col justify-between rounded-2xl border border-white/15 bg-slate-900/80 p-6 backdrop-blur-xl shadow-2xl">
-              {/* Official Foundation Banner Image */}
-              <div className="rounded-xl border border-white/10 bg-white p-4 shadow-inner">
+              {/* Official Foundation Registered Brand Card */}
+              <div className="rounded-xl border border-white/10 bg-white p-4 shadow-sm transition-all hover:shadow-md">
                 <img
                   src={FOUNDATION_ASSETS.logoBanner}
                   alt={FOUNDATION_INFO.fullOfficialName[lang]}
                   referrerPolicy="no-referrer"
-                  className="mx-auto h-auto max-h-24 w-full object-contain"
+                  className="mx-auto h-auto max-h-20 w-full object-contain"
                 />
+                <div className="mt-2 text-center text-[11px] font-medium text-slate-500">
+                  {lang === 'en'
+                    ? 'Registered Foundation for IT & Artificial Intelligence'
+                    : 'كيان رسمي معتمد لتقنية المعلومات والذكاء الاصطناعي'}
+                </div>
               </div>
 
               {/* Active Deployments Directory */}

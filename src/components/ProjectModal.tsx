@@ -170,6 +170,17 @@ export function ProjectModal({ project, onClose, onRequestSimilar }: ProjectModa
             </div>
           ) : (
             <div className="space-y-6 bg-white p-6 sm:p-8">
+              {project.previewImagePath && (
+                <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
+                  <img
+                    src={project.previewImagePath}
+                    alt={project.title[lang]}
+                    referrerPolicy="no-referrer"
+                    className="h-64 w-full object-cover object-center"
+                  />
+                </div>
+              )}
+
               <div>
                 <h4 className="text-xs font-semibold text-slate-500">
                   {lang === 'en' ? 'Operational Overview' : 'نظرة عامة على المنظومة'}

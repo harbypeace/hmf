@@ -16,12 +16,14 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
           <div className="md:col-span-5">
-            <img
-              src={FOUNDATION_ASSETS.logoBanner}
-              alt={FOUNDATION_INFO.fullOfficialName[lang]}
-              referrerPolicy="no-referrer"
-              className="h-14 w-auto object-contain"
-            />
+            <div className="inline-block rounded-xl border border-slate-200 bg-white p-3 shadow-xs">
+              <img
+                src={FOUNDATION_ASSETS.logoBanner}
+                alt={FOUNDATION_INFO.fullOfficialName[lang]}
+                referrerPolicy="no-referrer"
+                className="h-12 w-auto object-contain"
+              />
+            </div>
             <p className="mt-4 max-w-md text-xs leading-relaxed text-slate-600">
               {UI_COPY.footer.tagline[lang]}
             </p>
